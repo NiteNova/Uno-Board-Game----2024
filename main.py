@@ -15,6 +15,10 @@ pygame.display.set_caption("")
 
 
 # definitions:
+player_cards = []
+opponent_cards = []
+your_turn = True
+skipped = False
 
 
 
@@ -31,9 +35,17 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+        mouse_pos = Vector2(pygame.mouse.get_pos())
+
+
 
         # draw:
         screen.fill("#000000")
+
+        for i in range(len(player_cards)):
+            player_cards[i].draw()
+        for j in range(len(opponent_cards)):
+            opponent_cards[j].draw()
 
         pygame.display.flip()
 
