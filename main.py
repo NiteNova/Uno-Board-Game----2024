@@ -1,6 +1,7 @@
 import pygame
 from pygame.math import Vector2
 from pygame.rect import Rect
+from player_card import card
 
 
 # config:
@@ -32,16 +33,20 @@ def main():
         delta = clock.tick(FRAMERATE) / 1000
 
         # input:
+        mouse_pos = Vector2(pygame.mouse.get_pos())
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-        mouse_pos = Vector2(pygame.mouse.get_pos())
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                for i in range(len(player_cards)):
+                    if mouse_pos[0] > player_cards[i].hitbox[0] & mouse_pos[0] < player_cards[i].hitbox[0]:
+                        pass 
 
 
 
         # draw:
         screen.fill("#000000")
-
+        
         for i in range(len(player_cards)):
             player_cards[i].draw()
         for j in range(len(opponent_cards)):

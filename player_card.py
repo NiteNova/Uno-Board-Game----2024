@@ -22,6 +22,7 @@ class card:
     def draw(self):
         if self.isAlive == True:
             pygame.draw.rect(screen, (100, 50, 100), (self.hitbox.left, self.hitbox.top, self.hitbox.width, self.hitbox.height))
+            print(self.hitbox)
     def use(self):
         self.isAlive = False
     def updatePos(self, x, y):
@@ -31,8 +32,15 @@ class plaincard(card):
     def __init__ (self):
         super().__init__()
         self.number = random.randrange(0, 10)
-        
 
+    def draw(self):
+        if self.isAlive == True:
+            pygame.draw.rect(screen, (100, 50, 100), (self.hitbox.left, self.hitbox.top, self.hitbox.width, self.hitbox.height))
+    def use(self):
+        self.isAlive = False
+    def updatePos(self, x, y):
+        self.hitbox.update(x, y, self.hitbox.width, self.hitbox.height)
+    
 
 class plustwo(card):
     pass
